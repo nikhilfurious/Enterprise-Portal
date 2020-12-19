@@ -1,0 +1,18 @@
+.header_styles{
+    background: #ed5555;
+    color: white;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 7px black;
+    position: fixed;
+    width: 100%;
+    z-index: 999;
+}
+.heading_styles{
+    margin-left: 30px;
+    border-left: 1px solid;
+    font-size: 25px;
+    padding-left: 20px;
+    margin-bottom: 0px;
+}

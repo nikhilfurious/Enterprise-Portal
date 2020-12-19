@@ -1,0 +1,36 @@
+.dashboard_styles{
+    display: flex;
+    padding-top: 75px;
+    justify-content: space-around;
+}
+.dashboard_child{
+    width: 300px;
+    height: 207px;
+    color: darkgoldenrod;
+    border-radius: 8px;
+    border: 1px solid #726b6b;
+    border-top: 5px solid #726b6b;
+    border-right: 5px solid #726b6b;
+    border-left: 5px solid #726b6b;
+    padding-top: 25px;
+}
+.ellipsis{
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;  
+}
+.height80{
+    background: white;
+    font-size: 16px;
+    color: #726b6b;
+}
+.btn_styles{
+    background: #726b6b;
+    padding: 13px !important;
+    outline: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    margin-top: 30px;
+}

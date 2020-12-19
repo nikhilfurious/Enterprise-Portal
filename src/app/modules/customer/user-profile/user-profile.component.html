@@ -1,0 +1,62 @@
+<div class="col-12 p-0 float-left user_profile">
+    <h2 class="float-left mt-3">Welcome {{customerName}}</h2>
+    <div class="col-11 float-left user_profile_container mt-4">
+        <div class="col-12 p-0 float-left">
+            <div class="col-12 p- float-left mb-5">
+                
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 mt-4 p-0 float-left">
+                    <mat-label> Customer Number</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="1232">
+                  </mat-form-field>
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 p-0 float-left mt-4">
+                    <mat-label> Name</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="Mahesh">
+                  </mat-form-field>
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 p-0 float-left mt-4">
+                    <mat-label> City</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="Bangalore">
+                  </mat-form-field>
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 p-0 float-left mt-4">
+                    <mat-label> Postal code</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="560073">
+                  </mat-form-field>
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 p-0 float-left mt-4">
+                    <mat-label> Region(State, Province, Country)</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="Karnataka, India">
+                  </mat-form-field>
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 p-0 float-left mt-4">
+                    <mat-label> House number and street</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="12, 1st cross">
+                  </mat-form-field>
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 p-0 float-left mt-4">
+                    <mat-label> First telephone number</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="7863278493">
+                  </mat-form-field>
+            </div>
+            <div class="col-6 float-left">
+                <mat-form-field class="col-12 p-0 float-left mt-4">
+                    <mat-label> Fax number</mat-label>
+                    <input [disabled]="isDisabled" matInput placeholder="Ex. Pizza" value="673267">
+                  </mat-form-field>
+            </div>
+            <div class="col-12 mt-5 float-left text-right">
+                <button (click)="enableEdit()" class="p-2">{{btn_text}}</button>
+                <!-- <button class="ml-3 p-2">Update</button> -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="col-12 p-0 float-left">
+    <div class="col-12 p-0 float-left subheader">
+        <mat-icon routerLink="/customer/finance" title="Finance" class="mt-1 float-left cursor_pointer" aria-hidden="false" aria-label="Example back icon">arrow_back</mat-icon>
+        <h2 class="float-left pl-3 m-0">Finance 2</h2>
+    </div>
+    <div class="col-12 float-left mt-5">
+        <table class="table table-striped mt-4">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let i of tableArray">
+                <th scope="row">{{i.col1}}</th>
+                <td>{{i.col2}}</td>
+                <td>{{i.col3}}</td>
+                <td>{{i.col4}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

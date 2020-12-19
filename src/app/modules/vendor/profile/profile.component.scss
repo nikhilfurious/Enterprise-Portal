@@ -1,0 +1,27 @@
+.user_profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+.user_profile_container{
+    background: #726b6b;
+    padding: 20px;
+    border-radius: 4px;
+    height: fit-content;
+}
+button{
+    background: white;
+    margin-top: 8px;
+    width: 148px;
+    border-radius: 4px;
+    color: white;
+    color: #726b6b;
+    font-weight: 700;
+    border: none;
+}
+button:hover{
+    box-shadow: 0 0 7px black;
+
+}

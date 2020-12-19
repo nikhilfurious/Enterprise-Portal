@@ -1,0 +1,140 @@
+<div class="col-12 p-0 float-left">
+    <div class="col-12 p-0 float-left subheader">
+      <mat-icon routerLink="/vendor/finance" title="dashboard" class="mt-1 float-left cursor_pointer" aria-hidden="false"
+        aria-label="Example back icon">arrow_back</mat-icon>
+      <h2 class="float-left pl-3 m-0" align="center">Credit Memo</h2>
+    </div>
+    <div class="col-12 float-left mt-5">
+      <!-- <table id="example" class="display nowrap" style="width:100%"> -->
+        <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+       
+            <th scope="col">Invoice Document number</th>
+            <th scope="col">Document date </th>
+            <th scope="col">Posting Date </th>
+            <th scope="col">Currency key </th>
+            <th scope="col">Gross invoice Amount </th>
+            
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of creditmemo; let i = index">
+    
+            <td>{{data.BELNR}}</td>
+            <td>{{data.BLDAT}}</td>
+            <td>{{data.BLDAT}}</td>
+            <td>{{data.WAERS}}</td>
+            <td>{{data.RMWWR}}</td>
+            <button type="button" class="btn btn-primary" (click)="retrieveRow(i)" data-toggle="modal"
+            data-target="#exampleModal">
+            View Items
+        </button>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="myExtraLargeModalLabel"
+aria-hidden="true">
+<h1  align="center">Credit memo</h1>
+<div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <table class="table" border = 0.5>
+                <tbody>
+                    <tr>
+                        <th>Item no</th>
+                        <th>Purchasing Document Number</th>
+                        <th>Material Number</th>
+                        <th>Plant number</th>
+                        <th>Quantiy</th>
+                   
+
+                    </tr>
+                    <tr *ngFor="let data of filterorder; let i=index">
+                        <td>{{data.EBELP}}</td>
+                        <td>{{data.EBELN}}</td>
+                        <td>{{data.MATNR}}</td>
+                        <td>{{data.WERKS}}</td>
+                        <td>{{data.BPMNG}}</td>
+                       
+                        <td><button class="btn-primary"  (click)="retrivewindividualitem(i)" data-toggle="modal" data-target="#myModal">view</button></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div *ngIf="isShown" id="individualitem">
+                <!-- <form >
+                  <div class="form-group row">
+                    <label for="name">Vendor Number </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.LIFNR}}>
+                   </div>
+                  <div class="form-group row">
+                    <label for="name">Purchasing Document </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.EBELN}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Purchasing Group </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.EKGRP}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Terms of Payment Key</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.ZTERM}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Total Value</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.RLWRT}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Currency Key</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.WAERS}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Created on: </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.AEDAT}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Item Number </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.EBELP}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Material Number </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.MATNR}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Description </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.TXZ01}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Net Price </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.NETPR}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Net Order Value</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.NETWR}}>
+                   </div>
+                   
+                  
+                 
+                 
+                 
+                </form> -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+    </div>
+</div>
+</div>
+<!-- model dialgo end --> 

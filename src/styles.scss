@@ -1,0 +1,66 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.height100{
+    height: 100%;
+}
+.cursor_pointer{
+    cursor: pointer;
+}
+.active{
+    background: #ed5555;
+    color: white;
+}
+.activewhite{
+    color: white !important;
+    outline: none;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label{
+    color: white;
+}
+.mat-input-element{
+    color: white !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-underline{
+    background-color: white !important;
+}
+.mat-form-field-ripple {
+    /*change color of underline when focused*/
+    background-color: green !important;;
+   }
+   .mat-focused .mat-form-field-label {
+    /*change color of label*/
+    color: white !important;
+   }
+  
+   .mat-form-field-underline {
+    /*change color of underline*/
+    background-color: white !important;
+  } 
+  
+  .mat-form-field-ripple {
+   /*change color of underline when focused*/
+   background-color: white !important;;
+  }
+  input.mat-input-element{
+      font-size: 18px;
+  }
+  .mat-form-field-label{
+      font-size: 16px !important;
+  }
+
+.mat-form-field-appearance-legacy.mat-form-field-disabled .mat-form-field-underline {
+    background-image: linear-gradient(to right, transparent 0%, transparent 33%, transparent 0%);
+    background-size: 4px 100%;
+    background-repeat: repeat-x;
+    background-color: transparent !important;
+}
+.mat-form-field-appearance-legacy .mat-form-field-label {
+    top: 1.16em;
+}
+div.dataTables_wrapper {
+    width: 800px;
+    margin: 0 auto;
+}

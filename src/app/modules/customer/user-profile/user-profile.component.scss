@@ -1,0 +1,30 @@
+.user_profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex-direction: column;
+}
+.user_profile_container{
+    background: linear-gradient(45deg, blue, violet);;
+    padding: 20px;
+    border-radius: 4px;
+    height: 515px;
+}
+button{
+    background: linear-gradient(45deg, violet, purple);
+    border: 1px solid #cacaca;
+    margin-top: 8px;
+    width: 148px;
+    border-radius: 4px;
+    color: white;
+}
+button:hover{
+    background: linear-gradient(45deg, purple, violet);
+    border: 1px solid #cacaca;
+    margin-top: 8px;
+    width: 148px;
+    border-radius: 4px;
+    color: white;
+
+}

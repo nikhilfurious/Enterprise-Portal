@@ -1,0 +1,171 @@
+<div class="col-12 p-0 float-left">
+    <div class="col-12 p-0 float-left subheader">
+      <mat-icon routerLink="/vendor/dashboard" title="dashboard" class="mt-1 float-left cursor_pointer" aria-hidden="false"
+        aria-label="Example back icon">arrow_back</mat-icon>
+      <h2 class="float-left pl-3 m-0">GOODS RECIPET</h2>
+    </div>
+    <div class="col-12 float-left mt-5">
+      <table class="table table-striped mt-4">
+        <thead>
+          <tr>
+            <th scope="col">Material DOCUMENT</th>
+            <th scope="col">Material Doc Year </th>
+            <th scope="col">PURCHASE order</th>
+            <th scope="col">Storage location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of goods; let i = index">
+            <td>{{data.MBLNR}}</td>
+            <td>{{data.MJAHR}}</td>
+            <td>{{data.EBELN}}</td>
+            <td>{{data.LGORT}}</td>
+     
+            <button type="button" class="btn btn-primary" (click)="retrieveRow(i)" data-toggle="modal"
+            data-target="#exampleModal">
+            View Items
+        </button>
+           
+
+           
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Model Dialog start -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"  aria-labelledby="myExtraLargeModalLabel"
+aria-hidden="true">
+<h1  align="center">Goods Reciept</h1>
+<div class="modal-dialog modal-lg " role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Details</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+       
+        <div id="invoice">
+<div class="toolbar hidden-print">
+    <div class="text-right">
+        <button id="printInvoice" class="btn btn-info"><i class="fa fa-print"></i> Print</button>
+        <button class="btn btn-info"><i class="fa fa-file-pdf-o"></i> Export as PDF</button>
+    </div>
+    <hr>
+</div>
+<div class="invoice overflow-auto">
+    <div style="min-width: 600px">
+        <header>
+            <div class="row">
+                <div class="col">
+                    <a target="_blank" href="https://lobianijs.com">
+                        <img src="/assets/kaar-log-circle.png" data-holder-rendered="true" />
+                        </a>
+                </div>
+                <div class="col company-details">
+                    <h2> Vendor Number</h2>
+                     <h1>SA100200</h1>
+                    <div>Company Code: SA01</div>
+                    <div>Fiscal Year: 2015</div>
+                </div>
+            </div>
+        </header>
+        <main>
+        <div class="modal-body">
+            <table class="table" border = 0.5>
+                <tbody>
+                    <tr>
+                        <th>Item no</th>
+                        <th>Material Document Number</th>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Currecny</th>
+                        <th>Amount</th>
+                        <td>View Details</td>
+
+                    </tr>
+                    <tr *ngFor="let data of filterorder; let i=index">
+                        <td>{{data.ZEILE}}</td>
+                        <td>{{data.MBLNR}}</td>
+                        <td>{{data.MAKTX}}</td>
+                        <td>{{data.MENGE}}</td>
+                        <td>{{data.WAERS}}</td>
+                        <td>{{data.DMBTR}}</td>
+                        <td><button class="btn-primary"  (click)="retrivewindividualitem(i)" data-toggle="modal" data-target="#myModal">view</button></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          </main>
+          <footer>
+              Invoice was created on a computer and is valid without the signature and seal.
+          </footer>
+      </div>
+  </div>
+
+            <div *ngIf="isShown" id="individualitem">
+                <!-- <form >
+                  <div class="form-group row">
+                    <label for="name">Vendor Number </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.LIFNR}}>
+                   </div>
+                  <div class="form-group row">
+                    <label for="name">Purchasing Document </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.EBELN}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Purchasing Group </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.EKGRP}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Terms of Payment Key</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.ZTERM}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Total Value</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.RLWRT}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Currency Key</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.WAERS}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Created on: </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.AEDAT}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Item Number </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.EBELP}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Material Number </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.MATNR}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Description </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.TXZ01}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Net Price </label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.NETPR}}>
+                   </div>
+                   <div class="form-group row">
+                    <label for="name">Net Order Value</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  value = {{individualitem.NETWR}}>
+                   </div>
+
+                </form> -->
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+        </div>
+    </div>
+</div>
+<!-- </div> -->
+<!-- model dialgo end -->

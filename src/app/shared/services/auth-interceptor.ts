@@ -11,7 +11,7 @@ export class AuthInterceptor implements http.HttpInterceptor {
 
   intercept(request: http.HttpRequest<any>, next: http.HttpHandler): Observable<http.HttpEvent<any>> {
     // add authorization header with basic auth credentials if available
-   const authData = window.btoa( 'pouser' + ':' + 'Tech@2021' );
+   const authData = window.btoa( 'pouser' + ':' + '2021@Tech' );
    request = request.clone({
       setHeaders: {
           Authorization: `Basic ${authData}`,

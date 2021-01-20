@@ -24,6 +24,7 @@ export class Dashboard1Component implements OnInit {
   individualitem2: any=0;
   itemno: any;
   isShown: boolean = false ;
+  
  
   constructor(private http: HttpClient, public service:HttpService,public dialog: MatDialog) {
     this.getData();
@@ -83,45 +84,4 @@ ngOnInit(): void {
 
 }
 
-// retrieveRow(i){
-//   //debugger;
-//   this.filterorder=this.salesorderorginal.item.filter(j=>j.EBELN==this.salesorder[i].EBELN);
-// console.log("filerdata:",this.filterorder);
-//   for(this.itemClick=0;this.itemClick<14;this.itemClick++){
-//     console.log(this.itemDetail[i]);
-//     this.itemDetail[this.itemClick]=false;
-//   }
-  
-  // this.itemDetail[i]=true;
- 
-  // this.service.userClickedCustId=this.salesorder[i].EBELN;
-//  this.service.userClickDate=this.HEADERDATA.item[i].AEDAT;
-//  this.service.userClickPurchaseGroup = this.HEADERDATA.item[i].EKGRP;
-//  this.service.userClickPurchaseOrg= this.HEADERDATA.item[i].EKORG;
-//  this.service.userClickTotalValue = this.HEADERDATA.item[i].RLWRT;
-//  this.service.userClickCurrency = this.HEADERDATA.item[i].WAERS;
-  // this.service.userClickItem = this.salesorder[i].EBELP;
-//  this.service.userClickMatNumber = this.HEADERDATA.item[i].MATNR;
-//  this.service.userClickMaterial = this.HEADERDATA.item[i].EMATN;
-//  this.service.userClickPlant = this.HEADERDATA.item[i].WERKS;
-//  this.service.userClickPOQuantity = this.HEADERDATA.item[i].MENGE;
-//  this.service.userClickNetPrice = this.HEADERDATA.item[i].NETPR;
-//  this.service.userClickNetValue = this.HEADERDATA.item[i].NETWR;
-//   this.openDialog();
-// }
-// }
-
-
-
-// @Component({
-//   selector: 'dialog-overview-example-dialog',
-//   templateUrl: 'popup-dash1.html',
-//   styleUrls: ['./dashboard1.component.scss']
-// })
-// export class DialogOverviewExampleDialog {
-
-//   constructor(public service:HttpService) {}
-
- 
-// }
 

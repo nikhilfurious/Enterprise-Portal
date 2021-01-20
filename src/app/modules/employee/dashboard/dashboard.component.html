@@ -1,1 +1,190 @@
-<p>dashboard works!</p>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://unpkg.com/bootstrap-table/dist/bootstrap-table.min.js"></script>
+<div class="container">
+    
+
+    <div class="row">
+        <div class="col-sm-4 py-2">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded ">
+                <div class="card-body">
+                    <h2>Comp off</h2>
+                    <img src="https://i.pinimg.com/originals/78/bf/b4/78bfb4d67cf661cefe3cbf4d4c9b2176.gif" width=85%>
+                    <p>Allowed : {{quota1.ANZHL|number:'1.0-0'}}<p> 
+                      <p style="color: red;">Taken: {{quota1.KVERB|number:'1.0-0'}}<p>    
+                      <p style="color: green;">Available : {{available1}}<p>   
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 py-2">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-body" ngFor="let i of data.ITAB_LEAVE1">
+                    
+              
+                    <h2> Sick Leave</h2>
+                    <img src="https://cdn.dribbble.com/users/638812/screenshots/1840007/sick-dude-in-bed.gif" width=85%>
+                <p>Allowed :{{quota2.ANZHL| number:'1.0-0'}}<p> 
+                <p style="color: red;">Taken :{{quota2.KVERB| number:'1.0-0'}}<p>    
+                <p style="color: green;">Available: {{available2}}<p>   
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 py-2">
+            <div class="shadow-lg p-3 mb-5 bg-white rounded">
+                <div class="card-body">
+                    <!-- <h3 class="card-title">Comp leave</h3>
+                    <hr>
+                    <p class="card-text">Available:0 </p>
+                    <p class="card-text">Taken: 0 </p>
+                </div> -->
+                <h2>Flexi holidays</h2>
+                <img src="https://www.ecf-fl.org/resources/Pictures/2020%20See%20You%20in%20September%20Summer%20hiatus.gif" width=85%>
+                <p>Allowed : {{quota2.ANZHL| number:'1.0-0'}}<p> 
+                <p style="color: red;">Taken :{{quota2.KVERB| number:'1.0-0'}}<p>    
+                <p style="color: green;">Available : {{available3}}<p>     
+            </div>
+        </div>
+        
+    </div>
+</div>
+<hr/>
+  <div class="row">
+  <div class="container">
+  
+<div class="col-sm-12 text-right">
+  <button  type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">
+  Apply For Leave
+  </button>
+</div>
+</div>
+
+<div class=" shadow-lg p-3 mb-5 bg-white rounded col-sm-12 float-left mt-5"> 
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+	<table id="example" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            
+                <th>FORMNUMBER</th>
+                <th>CREATEDATE</th>
+                <!-- <th>APPROVEDBY</th> -->
+                <th>COST CENTER</th>
+                <th>FROM DATE</th>
+                <th>TO DATE</th>
+                <!-- <th>REASON TYPE</th> -->
+                <th>REASON</th>
+                <th>CONTACT</th>
+                <th>STATUS</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor= "let data of leaveList.item">
+              
+                <td>{{data.FORMNUMBER}}</td>
+                <td>{{data.CREATEDATE}}</td>
+                <!-- <td>{{data.APPROVEDBY}}</td> -->
+                <td>{{data.COSTCENTER}}</td>
+                <td>{{data.FIRSTDAY1}}</td>
+                <td>{{data.LASTDAY1}}</td>
+                <!-- <td>{{data.ABSHOURS3}}</td> -->
+                <!-- <td>{{data.HOLIDAYTYP1}}</td> -->
+                <td>{{data.REASON}}</td>
+                <td>{{data.CONTACT}}</td>
+                <td>{{data.PROCSTATE}}</td>
+                
+            </tr>
+      
+            
+                  </tbody>
+        <tfoot>
+           
+        </tfoot>
+    </table>
+    </div>
+    </div>
+  </div>
+   
+  
+  
+  <!-- Modal -->
+  <div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel"aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+        
+        <form >
+       
+        
+        <!-- Form Name -->
+        <legend>Leave Request Form </legend>
+        
+        <!-- Select Basic -->
+       
+        <!-- Text input-->
+        <div class="form-group row">
+          <label for ="ID">EmployeeID</label>  
+         
+          <input  type="text" placeholder="" class="form-control input-md" id="ID" [(ngModel)]="emp1id"[ngModelOptions]="{standalone: true}" >
+            
+          </div>
+        
+        
+        <!-- Text input-->
+          <div class="form-group">
+            <label for="Totalleaverequired">From Date</label>  
+      
+            <input id="Totalleaverequired"  type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="fdate"[ngModelOptions]="{standalone: true}" >
+              
+            </div>
+       
+        
+        <!-- Select Basic -->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="Pleaseselectthetypeofleave.">To Date</label>
+          <input id="Totalleaverequired"  type="text" placeholder="" class="form-control input-md" required="" [(ngModel)]="tdate" [ngModelOptions]="{standalone: true}" >
+            
+          </div>
+ 
+        
+        <!-- Text input-->
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="Leaverequiredfrom">Reason Type </label>  
+         
+          <input id="Leaverequiredfrom" name="Leaverequiredfrom" type="text" placeholder="" class="form-control input-md" [(ngModel)] = "type" [ngModelOptions]="{standalone: true}">
+            
+          </div>
+       
+        
+  
+        <div class="form-group">
+          <label class="col-md-4 control-label" for="ReasonforLeave">Reason for Leave</label>
+                  
+            <textarea class="form-control" id="ReasonforLeave" name="ReasonforLeave" [(ngModel)]="reason" ></textarea>
+          </div>
+   
+        
+        <!-- Button -->
+        <!-- <div class="form-group">
+          <label class="col-md-4 control-label" for="submit"></label>
+          <div class="col-md-4">
+            <button id="submit" name="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </div> -->
+     
+       
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="sendData()">Submit</button>
+        </div>
+      </form>
+    </div>
+      </div>
+    </div>
+  </div>

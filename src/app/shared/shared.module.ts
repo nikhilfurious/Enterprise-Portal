@@ -4,6 +4,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDividerModule} from '@angular/material/divider';
 import {DialogOverviewExampleDialog} from '../modules/customer/dashboard2/dashboard2.component'
 
 @NgModule({
@@ -14,13 +15,16 @@ import {DialogOverviewExampleDialog} from '../modules/customer/dashboard2/dashbo
     MatIconModule,
     FormsModule,
     MatDialogModule,
+    MatDividerModule,
+    MatDividerModule
     
   ],
   exports:[
     MatInputModule,
     MatIconModule,
     FormsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   entryComponents:[DialogOverviewExampleDialog]
 })

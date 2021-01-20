@@ -1,0 +1,237 @@
+<div class="col-12 p-0 float-left">
+    <div class="col-12 p-0 float-left subheader">
+      <mat-icon routerLink="/vendor/dashboard" title="dashboard" class="mt-1 float-left cursor_pointer" aria-hidden="false"
+        aria-label="Example back icon">arrow_back</mat-icon>
+      <h2 class="float-left pl-3 m-0">NOTIFICATION DETAILS</h2>
+    </div>
+
+   
+</div>
+<h2>Priority</h2>
+
+<ol>
+  <li>High</li>
+  <li>Medium</li>
+  <li>Low</li>
+</ol>  
+<h2>Notification Type</h2>
+
+<ol>
+  <li>B1- Breakdown Maintainance</li>
+  <li>B2 - Preventive Maintainance</li>
+  
+</ol>  
+<hr>
+<div class="col-sm-12 text-right">
+  <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" >Apply Notification</button>
+
+</div>
+
+<div class=" shadow-lg p-3 mb-5 bg-white rounded col-sm-12 float-left mt-5"> 
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+	<table id="example" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+            
+
+            <th scope="col">NOTIFICATION NUMBER</th>
+            <th scope="col">NOTIFICATION TITLE</th>
+            <th scope="col">TYPE</th>
+            <th scope="col">START DATE</th>
+              <th scope="col">END DATE</th>
+
+            <th scope="col">WORK ORDER NUMBER</th>
+            <th scope="col">MALFUNCTION START DATE</th>
+            <th scope="col">COMPANY CODE</th>
+            <th scope="col">EQUIPMENT NUMBER</th>
+            <th scope="col">PRIORITY</th>
+            
+            <th scope="col">NAME</th>
+             <th scope="col">OBJECT NUMBER </th>
+             <th scope="col">EDIT </th>
+  
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of notiforder ; let i = index">
+            <td>{{data.QMNUM}}</td>
+            <td>{{data.QMTXT}}</td>
+            <td>{{data.QMART}}</td>
+            <td>{{data.QMDAT}}</td>
+            <td>{{data.QMDAB}}</td>
+
+            <td>{{data.AUFNR}}</td>
+            <td>{{data.AUSVN}}</td>
+            <td>{{data.SWERK}}</td>
+            <td>{{data.EQUNR}}</td>
+            <td>{{data.PRIOK}}</td>
+          
+            <td>{{data.QMNAM}}</td>
+            <td>{{data.OBJNR}}</td>
+        
+            <td> <button type="button" class="btn btn-primary" (click)="retrieveRow(i)" data-toggle="modal" data-target="#exampleModal">
+                    Edit Items
+                </button>
+                </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+    </div>
+
+
+
+  
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Notifcation Id</label>
+                  <input type="email" class="form-control" name = "notifid" id="inputEmail4" [(ngModel)]="nid" value={{nid}} readonly  >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Type</label>
+                  <input type="TEXT" class="form-control" name ="type" id="inputEmail4" [(ngModel)]="ntype" value={{ntype}} >
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputEmail4">TITLE</label>
+                  <input type="email" class="form-control" name = "title" id="inputEmail4" [(ngModel)]="ntitle" value={{ntitle}} >
+                </div>
+      
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Start Date</label>
+                  <input type="email" class="form-control" name="stdate" id="inputEmail4"  [(ngModel)]="nstdat" value={{nstdat}} >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">End Date</label>
+                  <input type="email" class="form-control" name="edate" id="inputEmail4" [(ngModel)]="nedat" value={{nedat}}  >
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputEmail4">Work Order Number</label>
+                  <input type="email" class="form-control" name="won" id="inputEmail4"  [(ngModel)]="nwo" value={{nwo}}  readonly>
+                </div>
+              
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Company Code</label>
+                  <input type="email" class="form-control" name="cc" id="inputEmail4" [(ngModel)]="ncc" value={{ncc}} >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Malfunction Start Date</label>
+                  <input type="email" class="form-control" name =" msd" id="inputEmail4" [(ngModel)]="nmsd" value={{nmsd}} >
+                </div>
+              </div>
+             
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Equipment Number</label>
+                  <input type="email" class="form-control" name ="en" id="inputEmail4" placeholder="Email" [(ngModel)]="nen" value={{nen}}>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Priority</label>
+                  <input type="email" class="form-control"name="pn"  id="inputEmail4" placeholder="Email"[(ngModel)]="nprior"value={{nprior}} >
+                </div>
+              </div>    
+ 
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary"(click)="sendData()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <form>
+            <div class ="form-row">
+              <div class="form-group col-md-6">
+                <label for ="ID">Notification number</label>  
+               
+                <input  type="text" placeholder="" class="form-control input-md" id="ID" [(ngModel)]="notif2" [ngModelOptions]="{standalone: true}" >
+                  
+                </div>
+  
+                <div class="form-group col-md-6">
+                  <label for="ID">Type</label>
+                  <input type="text" placeholder="" class="form-control input-md"  id="ID" [(ngModel)]="ntype2" [ngModelOptions]="{standalone: true}" >
+                </div>
+              </div>
+       
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="ID">TITLE</label>
+                <input type="text" class="form-control input-md" placeholder=""name ="title" id="ID" [(ngModel)]="ntitle2" [ngModelOptions]="{standalone: true}" >
+              </div>
+    
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="ID">Start Date</label>
+                <input type="text" class="form-control input-md"placeholder="" name="stdate" id="ID"  [(ngModel)]="nstdat2"[ngModelOptions]="{standalone: true}"  >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="ID">End Date</label>
+                <input type="text" class="form-control input-md"placeholder="" name="edate" id="ID" [(ngModel)]="nedat2" [ngModelOptions]="{standalone: true}"  >
+              </div>
+            </div>
+        
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="ID" >Company Code</label>
+                <input type="text" class="form-control input-md"placeholder="" name="cc" id="ID" [(ngModel)]="ncc2"[ngModelOptions]="{standalone: true}"  >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="ID">Malfunction Start Date</label>
+                <input type="text" class="form-control input-md"placeholder="" name =" msd" id="ID" [(ngModel)]="nmsd2" [ngModelOptions]="{standalone: true}"  >
+              </div>
+            </div>
+           
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="ID">Equipment Number</label>
+                <input type="text"class="form-control input-md"placeholder="" name ="en" id="ID" placeholder="Email" [(ngModel)]="nen2"[ngModelOptions]="{standalone: true}"  >
+              </div>
+              <div class="form-group col-md-6">
+                <label for="ID">Priority</label>
+                <input type="text" class="form-control input-md"placeholder="" name="pn"  id="ID" placeholder="Email"[(ngModel)]="nprior2" [ngModelOptions]="{standalone: true}" > 
+              </div>
+            </div>     -
+           
+            <!-- <div class="form-group row">
+              <label for ="ID">EmployeeID</label>  
+             
+              <input  type="text" placeholder="" class="form-control input-md" id="ID" [(ngModel)]="nid2" [ngModelOptions]="{standalone: true}" >
+                
+              </div> -->
+
+        </form>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary"(click)="createData()">Save changes</button>
+        </div>
+        </div>
+      </div>
+    </div>

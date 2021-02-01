@@ -1,6 +1,6 @@
 <div class="col-12 p-0 float-left">
     <div class="col-12 p-0 float-left subheader">
-      <mat-icon routerLink="/vendor/dashboard" title="dashboard" class="mt-1 float-left cursor_pointer" aria-hidden="false"
+      <mat-icon routerLink="/shop/prodorder" title="dashboard" class="mt-1 float-left cursor_pointer" aria-hidden="false"
         aria-label="Example back icon">arrow_back</mat-icon>
       <!-- <h2 class="float-left pl-3 m-0">NOTIFICATION DETAILS</h2> -->
     </div>
@@ -8,10 +8,10 @@
    
 </div>
 <hr>
-<div class="col-sm-12 text-right">
+<!-- <div class="col-sm-12 text-right">
   <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg" >Create New</button>
 
-</div>
+</div> -->
 <div class="table-wrapper-scroll-y my-custom-scrollbar">
 <div class=" shadow-lg p-3 mb-5 bg-white rounded col-sm-12 float-left mt-5"> 
 
@@ -19,56 +19,59 @@
         <thead>
             <tr>
             
-
+            <th scope="col">Order Number</th>
             <th scope="col">PLANNED ORDER NUMBER</th>
             <th scope="col">SALES ORDER NUMBER</th>
-            <th scope="col">ITEM NUMBER</th>
-            <th scope="col">MATERIAL NUMBER</th>
-
-              <th scope="col">PLANNING PLANT</th>
-            <th scope="col">PRODUCTION PLANT </th>
-            <th scope="col">ORDER TYPE</th>
-            <th scope="col">PROCURMENT TYPE</th>
-
-            <th scope="col">TOTAL PLANNED ORDER QUANTITY</th>
-            <!-- <th scope="col">FIXED QUANTITY</th> -->
-            <th scope="col"> START DATE </th>
-            <th scope="col">FINISH DATE</th>
-           
-            <th scope="col">OPENING DATE</th>
-             <th scope="col">STORAGE LOCATION</th>
-             <th scope="col">UNIT OF MEASURE</th>
-             <th scope="col">MRP AREA</th>
-
-             <th scope="col"> EDIT</th>
+            <th scope="col">Sales Order Item</th>
+            <th scope="col"> Quantity</th>
+            <th scope="col">Fixed Quantity</th>
+            <th scope="col">Storage Location</th>
+            <th scope="col">Batch Number</th>
+  
+            <th scope="col">Start Date</th>
+            <th scope="col">Opening Date</th>
+            <th scope="col">Procurement Type</th>
+            <th scope="col">Scrap Quantity</th>
+             <th scope="col">Order Quantity</th>
+             <th scope="col">Material Number</th>
+             <th scope="col">Plant</th>
+             <th scope="col">Planning Plant</th>
+             <th scope="col">Edit</th>
            
     
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let data of planorder ; let i = index">
+          <tr *ngFor="let data of prodorderpending ; let i = index">
+            <td>{{data.AUFNR}}</td>
             <td>{{data.PLNUM}}</td>
             <td>{{data.KDAUF}}</td>
             <td>{{data.KDPOS}}</td>
-            <td>{{data.MATNR}}</td>
+            <td>{{data.WEMNG}}</td>
 
-            <td>{{data.PLWRK}}</td>
-            <td>{{data.PWWRK}}</td>
-            <td>{{data.PAART}}</td>
+            <td>{{data.PAMNG}}</td>
+            <td>{{data.LGORT}}</td>
+            <td>{{data.CHARG}}</td>
+            
+
+            <td>{{data.STRMP}}</td>
+            <td>{{data.ETRMP}}</td>
             <td>{{data.BESKZ}}</td>
 
-            <td>{{data.GSMNG}}</td>
-            <!-- <td>{{data.AVMNG}}</td> -->
-            <td>{{data.PSTTR}}</td>
-            <td>{{data.PEDTR}}</td>
-
-            <td>{{data.PERTR}}</td>
-            <td>{{data.LGORT}}</td>
-            <td>{{data.MEINS}}</td>
-            <td>{{data.BERID}}</td>
-        
-                <td>
+            <td>{{data.PSAMG}}</td>
+            <td>{{data.PSMNG}}</td>
+            <td>{{data.MATNR}}</td>
+            <td>{{data.DWERK}}</td>
+            <td>{{data.PWERK}}</td>
+            <!-- <td>{{data.DGLTS}}</td> -->
+                <!-- <td>
                   <i class="fa fa-edit" style="font-size:20px;color:red" (click)="retrieveRow(i)" data-toggle="modal" data-target="#exampleModal"></i>
+                </td>  -->
+                <td>
+                    <i class="fa fa-edit" style='font-size:36px' data-toggle="modal" data-target="#exampleModal" (click)="retrieveRow(i)"></i>
+                </td>
+                <td>
+                    <i class="fa fa-bolt" style='font-size:36px' (click)=" release(i)"aria-hidden="true"></i>
                 </td>
           </tr>
         </tbody>
@@ -82,7 +85,7 @@
   
     
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -92,84 +95,92 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form id>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Planned Order Number</label>
-                  <input type="text" class="form-control" name="PON" id="inputEmail4"[(ngModel)]="PLNUM" value={{PLNUM}}  readonly  >
+                  <label for="inputEmail4"> Order Number</label>
+                  <input  [disabled]="isDisabled" type="text" class="form-control" name="form-control" id="inputEmail4"[(ngModel)]="AUFNR" value={{AUFNR}}  readonly  >
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">Sales Order Number</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name="sod" id="inputEmail4" [(ngModel)]="KDAUF" value={{KDAUF}}>
+                  <label for="inputPassword4">PLNUM</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FD" id="inputEmail4" [(ngModel)]="PLNUM" value={{PLNUM}} >
+                  
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Item Number</label>
-                  <input [disabled]="isDisabled"  type="text" class="form-control" name="itn" id="inputEmail4"[(ngModel)]="KDPOS" value={{KDPOS}}>
+                  <label for="inputEmail4">CHARG</label>
+                  <input [disabled]="isDisabled"  type="text" class="form-control" name="itn" id="inputEmail4"[(ngModel)]="CHARG" value={{CHARG}}>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">Material Number</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name="mtn" id="inputEmail4" [(ngModel)]="MATNR" value={{MATNR}}>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">Planning Plant</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name = "pp" id="inputEmail4"[(ngModel)]="PLWRK" value={{PLWRK}} >
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">Production Plant</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="productionplant" id="inputEmail4" [(ngModel)]="PWWRK" value={{PWWRK}}>
+                  <label for="inputPassword4">DGLTS</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name="mtn" id="inputEmail4" [(ngModel)]="DGLTS" value={{DGLTS}}>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Order Type</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name = "OrdeType" id="inputEmail4" [(ngModel)]="PAART" value={{PAART}}>
+                  <label for="inputEmail4">DWERK</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "pp" id="inputEmail4"[(ngModel)]="DWERK" value={{DWERK}} >
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">Procurement Type</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="ProcuremenType" id="inputEmail4" [(ngModel)]="BESKZ" value={{BESKZ}}>
+                  <label for="inputPassword4">ETRMP</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="productionplant" id="inputEmail4" [(ngModel)]="ETRMP" value={{ETRMP}}>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">Planned Order Quanity</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name = "POQ" id="inputEmail4" [(ngModel)]="GSMNG" value={{GSMNG}}>
+                  <label for="inputEmail4">KDAUF</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "OrdeType" id="inputEmail4" [(ngModel)]="KDAUF" value={{KDAUF}}>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">Fixed Quantity</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FQ" id="inputEmail4" [(ngModel)]="AVMNG" value={{AVMNG}}>
+                  <label for="inputPassword4">KDPOS</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="ProcuremenType" id="inputEmail4" [(ngModel)]="KDPOS" value={{KDPOS}}>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">LGORT</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "POQ" id="inputEmail4" [(ngModel)]="LGORT" value={{LGORT}}>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">MATNR</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FQ" id="inputEmail4" [(ngModel)]="MATNR" value={{MATNR}}>
                 </div>
               </div>
    
               <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="inputEmail4">Start Date</label>
-                  <input [disabled]="isDisabled"  type="text" class="form-control" name = "SD" id="inputEmail4" [(ngModel)]="PSTTR" value={{PSTTR}}>
+                  <label for="inputEmail4">PAMNG</label>
+                  <input [disabled]="isDisabled"  type="text" class="form-control" name = "SD" id="inputEmail4" [(ngModel)]="PAMNG" value={{PAMNG}}>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="inputPassword4">Finishing Date</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FD" id="inputEmail4" [(ngModel)]="PEDTR" value={{PEDTR}} >
+                 
+                 
+                 
+                  <label for="inputPassword4">BESKZ</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name="sod" id="inputEmail4" [(ngModel)]="BESKZ" value={{BESKZ}}>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="inputPassword4">Opening Date</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="OD" id="inputEmail4" [(ngModel)]="PERTR" value={{PERTR}} >
+                  <label for="inputPassword4">PSAMG</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="OD" id="inputEmail4" [(ngModel)]="PSAMG" value={{PSAMG}} >
                 </div>
               </div>
                 <div class="form-row">
-                  <div class="form-group col-md-4">
-                    <label for="inputEmail4">storage location</label>
-                    <input [disabled]="isDisabled"  type="text" class="form-control" name = "SL" id="inputEmail4"  [(ngModel)]="LGORT" value={{LGORT}}>
+                  <div class="form-group col-md-3">
+                    <label for="inputEmail4">PSMNG</label>
+                    <input [disabled]="isDisabled"  type="text" class="form-control" name = "SL" id="inputEmail4"  [(ngModel)]="PSMNG" value={{PSMNG}}>
                   </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputPassword4">unit of measure</label>
-                    <input [disabled]="isDisabled" type="text" class="form-control" name ="UM" id="inputEmail4"  [(ngModel)]="MEINS" value={{MEINS}}>
+                  <div class="form-group col-md-3">
+                    <label for="inputPassword4">PWERK</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="UM" id="inputEmail4"  [(ngModel)]="PWERK" value={{PWERK}}>
                   </div>
-                  <div class="form-group col-md-4">
-                    <label for="inputPassword4"> MRP AREA</label>
-                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="BERID" value={{BERID}} >
+                  <div class="form-group col-md-3">
+                    <label for="inputPassword4">STRMP</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="STRMP" value={{STRMP}} >
+                  </div>
+                   <div class="form-group col-md-3">
+                    <label for="inputPassword4">WEMNG</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="WEMNG" value={{WEMNG}} >
                   </div>
               </div>
           </form>
@@ -181,8 +192,7 @@
         </div>
       </div>
     </div>
-
-     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+     <!-- <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <form>
@@ -271,4 +281,4 @@
         </div>
         </div>
      </div>
-    </div>
+    </div> --->

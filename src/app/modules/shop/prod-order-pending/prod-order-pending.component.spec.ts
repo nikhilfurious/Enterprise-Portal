@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MaintainLandingComponent } from './maintain-landing.component';
+import { ProdOrderPendingComponent } from './prod-order-pending.component';
 
-describe('MaintainLandingComponent', () => {
-  let component: MaintainLandingComponent;
-  let fixture: ComponentFixture<MaintainLandingComponent>;
+describe('ProdOrderPendingComponent', () => {
+  let component: ProdOrderPendingComponent;
+  let fixture: ComponentFixture<ProdOrderPendingComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MaintainLandingComponent ]
+      declarations: [ ProdOrderPendingComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MaintainLandingComponent);
+    fixture = TestBed.createComponent(ProdOrderPendingComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

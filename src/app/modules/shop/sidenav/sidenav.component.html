@@ -1,1 +1,28 @@
-<p>sidenav works!</p>
+<div class="sidenav_styles height100 float-left" [ngClass]="expandMenu?'width220':'width60'" (mouseenter)="mouseEnterFun()" (mouseleave)="mouseLeaveFun()">
+    <div class="col-12 pl-0 pr-0 float-left pb10 disflex">
+        <span (click)="showMenu()" class="cursor_pointer plr-18 float-left">
+            <mat-icon title="menu" class="icon_color" aria-hidden="false" aria-label="Example menu icon">menu</mat-icon>
+        </span>
+        <span class="float-left pt-03 icon_color" *ngIf="showExpantion">Menu</span>
+    </div>
+   
+    <!-- <div routerLink="dashboard" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="col-12 pl-0 pr-0 float-left pb10 disflex">
+        <span class="cursor_pointer plr-18 float-left">    
+            <mat-icon routerLink="dashboard" title="Dashboard" routerLinkActive="activewhite" [routerLinkActiveOptions]="{exact: true}" class="icon_color" aria-hidden="false" aria-label="Example dashboard icon">    <mat-icon aria-hidden="false" aria-label="Example dashboard icon">dashboard</mat-icon></mat-icon>
+        </span>
+        <span routerLink="dashboard" routerLinkActive="activewhite" class="float-left pt-03 icon_color" *ngIf="showExpantion">Dashboard</span>
+    </div> -->
+    
+    <div routerLink="planorder" routerLinkActive="active" class="col-12 pl-0 pr-0 float-left pb10 disflex">
+        <span class="cursor_pointer plr-18 float-left">
+            <mat-icon routerLink="notification" routerLinkActive="activewhite" title="Finance" class="icon_color" aria-hidden="false" aria-label="Example attach_money icon">drag_indicator</mat-icon>
+        </span>
+        <span routerLink="planorder" routerLinkActive="activewhite" class="float-left pt-03 icon_color" *ngIf="showExpantion">Plan Order</span>
+    </div>
+    <div routerLink="prodorder" routerLinkActive="active" class="col-12 pl-0 pr-0 float-left pb10 disflex">
+        <span class="cursor_pointer plr-18 float-left">
+            <mat-icon routerLink="workorder" routerLinkActive="activewhite" title="Finance" class="icon_color" aria-hidden="false" aria-label="Example attach_money icon">build</mat-icon>
+        </span>
+        <span routerLink="prodorder" routerLinkActive="activewhite" class="float-left pt-03 icon_color" *ngIf="showExpantion">Production Order</span>
+    </div>
+</div>

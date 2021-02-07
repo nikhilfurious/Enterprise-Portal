@@ -29,6 +29,9 @@ export class ProdOrderReleaseComponent implements OnInit {
   PWERK: any;
   STRMP: any;
   WEMNG: any;
+
+  release_number1:any;
+  release_number2:any;
   constructor(private http: HttpClient) { 
     this.getData();
   }
@@ -46,7 +49,19 @@ export class ProdOrderReleaseComponent implements OnInit {
         this.prodorder_release = this.products.ITAB_R.item;
         debugger;
         console.log(this.prodorder_release);
-
+          // for(let i=0;i<this.prodorder_release.length;i++){
+          //   if(i===0){
+          //     debugger;
+          //     this.release_number1 = this.prodorder_release[i].KDAUF;
+          //   }
+          //   else if(i===this.prodorder_release.length){
+          //     debugger;
+          //     this.release_number2 = this.prodorder_release[i].KDAUF;
+          //   }
+          //   else{
+          //     return 0;
+        //  }
+          //}
        //
         })
     
@@ -82,12 +97,12 @@ export class ProdOrderReleaseComponent implements OnInit {
 enableEdit(){
   if(this.isDisabled == true)
   {
-    this.isDisabled=false
+    this.isDisabled=false;
     this.btn_text="Save";
   }
   else{
     this.isDisabled=true
-    this.btn_text="Edit"
+    this.btn_text="Edit";
 
     const url = `api/shop_prde`;
     const  postData1 = 
@@ -95,7 +110,7 @@ enableEdit(){
 "AUFNR": this.AUFNR,
 "BESKZ": this.BESKZ,
 "CHARG": this.CHARG,
-
+"DFREI": "1",
 "DGLTS" : this.DGLTS,
 "DWERK": this.DWERK,
 "ETRMP": this.ETRMP,
@@ -115,7 +130,12 @@ enableEdit(){
   }
    this.http.post(url, postData1).subscribe(data => {
      console.log(data);
+ 
    })
   }
 }
+// handleOk(){
+//   alert('Updated Successfully');
+//   this.getData();
+// }
 }

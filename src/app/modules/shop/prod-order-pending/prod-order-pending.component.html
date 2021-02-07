@@ -24,17 +24,19 @@
             <th scope="col">SALES ORDER NUMBER</th>
             <th scope="col">Sales Order Item</th>
             <th scope="col"> Quantity</th>
+
             <th scope="col">Fixed Quantity</th>
             <th scope="col">Storage Location</th>
             <th scope="col">Batch Number</th>
-  
             <th scope="col">Start Date</th>
             <th scope="col">Opening Date</th>
+
             <th scope="col">Procurement Type</th>
             <th scope="col">Scrap Quantity</th>
              <th scope="col">Order Quantity</th>
              <th scope="col">Material Number</th>
              <th scope="col">Plant</th>
+            
              <th scope="col">Planning Plant</th>
              <th scope="col">Edit</th>
            
@@ -52,16 +54,15 @@
             <td>{{data.PAMNG}}</td>
             <td>{{data.LGORT}}</td>
             <td>{{data.CHARG}}</td>
-            
-
             <td>{{data.STRMP}}</td>
             <td>{{data.ETRMP}}</td>
-            <td>{{data.BESKZ}}</td>
 
+            <td>{{data.BESKZ}}</td>
             <td>{{data.PSAMG}}</td>
             <td>{{data.PSMNG}}</td>
             <td>{{data.MATNR}}</td>
             <td>{{data.DWERK}}</td>
+
             <td>{{data.PWERK}}</td>
             <!-- <td>{{data.DGLTS}}</td> -->
                 <!-- <td>
@@ -94,6 +95,97 @@
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
+          <!-- <div class="modal-body">
+            <form id>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4"> Order Number</label>
+                  <input  [disabled]="isDisabled" type="text" class="form-control" name="form-control" id="inputEmail4"[(ngModel)]="AUFNR" value={{AUFNR}}  readonly  >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Planned Order</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FD" id="inputEmail4" [(ngModel)]="PLNUM" value={{PLNUM}} >
+                  
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Batch Number</label>
+                  <input [disabled]="isDisabled"  type="text" class="form-control" name="itn" id="inputEmail4"[(ngModel)]="CHARG" value={{CHARG}}>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Finish Date</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name="mtn" id="inputEmail4" [(ngModel)]="DGLTS" value={{DGLTS}}>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Production Plant</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "pp" id="inputEmail4"[(ngModel)]="DWERK" value={{DWERK}} >
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Opening Date</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="productionplant" id="inputEmail4" [(ngModel)]="ETRMP" value={{ETRMP}}>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Sales Order Number</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "OrdeType" id="inputEmail4" [(ngModel)]="KDAUF" value={{KDAUF}}>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4"> Item number</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="ProcuremenType" id="inputEmail4" [(ngModel)]="KDPOS" value={{KDPOS}}>
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Storage Location</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "POQ" id="inputEmail4" [(ngModel)]="LGORT" value={{LGORT}}>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Material number</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FQ" id="inputEmail4" [(ngModel)]="MATNR" value={{MATNR}}>
+                </div>
+              </div>
+   
+              <div class="form-row">
+                <div class="form-group col-md-4">
+                  <label for="inputEmail4">Fixed Quantiy</label>
+                  <input [disabled]="isDisabled"  type="text" class="form-control" name = "SD" id="inputEmail4" [(ngModel)]="PAMNG" value={{PAMNG}}>
+                </div>
+                <div class="form-group col-md-4">
+                 
+                 
+                 
+                  <label for="inputPassword4">Procurement Type</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name="sod" id="inputEmail4" [(ngModel)]="BESKZ" value={{BESKZ}}>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputPassword4">Scrap Quantity</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="OD" id="inputEmail4" [(ngModel)]="PSAMG" value={{PSAMG}} >
+                </div>
+              </div>
+                <div class="form-row">
+                  <div class="form-group col-md-3">
+                    <label for="inputEmail4"> Order Item Quanity</label>
+                    <input [disabled]="isDisabled"  type="text" class="form-control" name = "SL" id="inputEmail4"  [(ngModel)]="PSMNG" value={{PSMNG}}>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputPassword4">Planning plant</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="UM" id="inputEmail4"  [(ngModel)]="PWERK" value={{PWERK}}>
+                  </div>
+                  <div class="form-group col-md-3">
+                    <label for="inputPassword4">Start Date</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="STRMP" value={{STRMP}} >
+                  </div>
+                   <div class="form-group col-md-3">
+                    <label for="inputPassword4">Item recived Quantity</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="WEMNG" value={{WEMNG}} >
+                  </div>
+              </div>
+          </form>
+          </div> -->
           <div class="modal-body">
             <form id>
               <div class="form-row">
@@ -102,91 +194,91 @@
                   <input  [disabled]="isDisabled" type="text" class="form-control" name="form-control" id="inputEmail4"[(ngModel)]="AUFNR" value={{AUFNR}}  readonly  >
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">PLNUM</label>
+                  <label for="inputPassword4">Planned Order number </label>
                   <input [disabled]="isDisabled" type="text" class="form-control" name ="FD" id="inputEmail4" [(ngModel)]="PLNUM" value={{PLNUM}} >
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Sales Order Number</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "OrdeType" id="inputEmail4" [(ngModel)]="KDAUF" value={{KDAUF}}>
+                  
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Sales Order Item</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="ProcuremenType" id="inputEmail4" [(ngModel)]="KDPOS" value={{KDPOS}}>
                   
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">CHARG</label>
-                  <input [disabled]="isDisabled"  type="text" class="form-control" name="itn" id="inputEmail4"[(ngModel)]="CHARG" value={{CHARG}}>
+                  <label for="inputEmail4">Quantity</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "pp" id="inputEmail4"[(ngModel)]="WEMNG" value={{WEMNG}} >
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">DGLTS</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name="mtn" id="inputEmail4" [(ngModel)]="DGLTS" value={{DGLTS}}>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="inputEmail4">DWERK</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name = "pp" id="inputEmail4"[(ngModel)]="DWERK" value={{DWERK}} >
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="inputPassword4">ETRMP</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="productionplant" id="inputEmail4" [(ngModel)]="ETRMP" value={{ETRMP}}>
+                  <label for="inputPassword4">Fixed Quantity</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="productionplant" id="inputEmail4" [(ngModel)]="PAMNG" value={{PAMNG}}>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">KDAUF</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name = "OrdeType" id="inputEmail4" [(ngModel)]="KDAUF" value={{KDAUF}}>
+                  <label for="inputEmail4">storage location</label>
+                  <input [disabled]="isDisabled"  type="text" class="form-control" name="itn" id="inputEmail4"[(ngModel)]="LGORT" value={{LGORT}}>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">KDPOS</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="ProcuremenType" id="inputEmail4" [(ngModel)]="KDPOS" value={{KDPOS}}>
+                  <label for="inputPassword4"> Batch Number</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name="mtn" id="inputEmail4" [(ngModel)]="CHARG" value={{CHARG}}>
                 </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
-                  <label for="inputEmail4">LGORT</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name = "POQ" id="inputEmail4" [(ngModel)]="LGORT" value={{LGORT}}>
+                  <label for="inputEmail4">Start Date</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name = "POQ" id="inputEmail4" [(ngModel)]="STRMP" value={{ETRMP}}>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="inputPassword4">MATNR</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FQ" id="inputEmail4" [(ngModel)]="MATNR" value={{MATNR}}>
+                  <label for="inputPassword4">Opening Date</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="FQ" id="inputEmail4" [(ngModel)]="ETRMP" value={{ETRMP}}>
                 </div>
               </div>
    
               <div class="form-row">
                 <div class="form-group col-md-4">
-                  <label for="inputEmail4">PAMNG</label>
-                  <input [disabled]="isDisabled"  type="text" class="form-control" name = "SD" id="inputEmail4" [(ngModel)]="PAMNG" value={{PAMNG}}>
+                  <label for="inputEmail4">Procurement Type</label>
+                  <input [disabled]="isDisabled"  type="text" class="form-control" name = "SD" id="inputEmail4" [(ngModel)]="BESKZ" value={{BESKZ}}>
                 </div>
                 <div class="form-group col-md-4">
-                 
-                 
-                 
-                  <label for="inputPassword4">BESKZ</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name="sod" id="inputEmail4" [(ngModel)]="BESKZ" value={{BESKZ}}>
+                  <label for="inputPassword4">Scrap Quantity</label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name="sod" id="inputEmail4" [(ngModel)]="PSAMG" value={{PSAMG}}>
+                  
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="inputPassword4">PSAMG</label>
-                  <input [disabled]="isDisabled" type="text" class="form-control" name ="OD" id="inputEmail4" [(ngModel)]="PSAMG" value={{PSAMG}} >
+                  <label for="inputPassword4">Order Quantity </label>
+                  <input [disabled]="isDisabled" type="text" class="form-control" name ="OD" id="inputEmail4" [(ngModel)]="PSMNG" value={{PSMNG}} >
                 </div>
               </div>
                 <div class="form-row">
                   <div class="form-group col-md-3">
-                    <label for="inputEmail4">PSMNG</label>
-                    <input [disabled]="isDisabled"  type="text" class="form-control" name = "SL" id="inputEmail4"  [(ngModel)]="PSMNG" value={{PSMNG}}>
+                    <label for="inputEmail4">Material Number</label>
+                    <input [disabled]="isDisabled"  type="text" class="form-control" name = "SL" id="inputEmail4"  [(ngModel)]="MATNR" value={{MATNR}}>
                   </div>
                   <div class="form-group col-md-3">
-                    <label for="inputPassword4">PWERK</label>
-                    <input [disabled]="isDisabled" type="text" class="form-control" name ="UM" id="inputEmail4"  [(ngModel)]="PWERK" value={{PWERK}}>
+                    <label for="inputPassword4">Production Plant</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="UM" id="inputEmail4"  [(ngModel)]="DWERK" value={{DWERK}}>
                   </div>
                   <div class="form-group col-md-3">
-                    <label for="inputPassword4">STRMP</label>
-                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="STRMP" value={{STRMP}} >
+                    <label for="inputPassword4">Planning Plant
+                    </label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="PWERK" value={{PWERK}} >
                   </div>
                    <div class="form-group col-md-3">
-                    <label for="inputPassword4">WEMNG</label>
-                    <input [disabled]="isDisabled" type="text" class="form-control" name ="MA" id="inputEmail4" [(ngModel)]="WEMNG" value={{WEMNG}} >
+                    <label for="inputPassword4">Finish Date</label>
+                    <input [disabled]="isDisabled" type="text" class="form-control" name ="AN" id="inputEmail4" [(ngModel)]="DGLTS" value={{DGLTS}} >
                   </div>
               </div>
           </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal"(click)="getData()">Close</button>
             <button type="button" class="btn btn-primary" (click)="enableEdit()">{{btn_text}}</button>
           </div>
         </div>
